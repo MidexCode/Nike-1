@@ -1,5 +1,7 @@
 import React from "react";
 import footerlogo from "../../assets/images/footer-logo.svg";
+import { copyrightSign } from "../../assets/icons";
+import { footerLinks, socialMedia } from "../Constants/constants.index";
 
 export const Footer = () => {
   return (
@@ -16,7 +18,36 @@ export const Footer = () => {
               Your perfect Size In Store. Get Rewards
             </p>
 
-            <div className="flex gap-5 items-center mt-8">{socialM}</div>
+            <div className="flex items-center gap-5 mt-8">
+              {socialMedia.map((icon) => (
+                <div
+                  className="flex justify-center items-center w-12 h-12 bg-white rounded-full"
+                  key={icon.alt}
+                >
+                  <img src={icon.src} alt={icon.alt} width={24} height={24} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-1 justify-between lg:gap-10 gap-20 flex-wrap">
+            {footerLinks.map((section) => (
+              <div key={section.title}>
+                <h4 className="font-montserrat text-2xl leading-normal font-medium mb-6 text-white">
+                  {section.title}
+                </h4>
+                <ul>
+                  {section.links.map((link) => (
+                    <li
+                      className="mt-3 font-montserrat text-base leading-normal text-white-400 hover:text-slate-gray"
+                      key={link.name}
+                    >
+                      <a href={link.link}>{link.name}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </footer>
